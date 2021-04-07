@@ -11,7 +11,6 @@
 
 .colornav{
     background-color: rgb(252, 252, 84);
-    font-size: 150%;
 }
 
 .margin-down-reserva{
@@ -109,3 +108,90 @@
 .login-color{
     background-color: orange;
 }
+.headerBoxBox1 {
+    width: 504px;
+    height: 130px;
+    display: table;
+    float: left;
+    text-align: right;
+}
+
+.repDom {
+    width: 100%;
+    height: 34px;
+    background: url(../img/repDom.png) no-repeat top right;
+    float: right;
+    margin: 20px 0 0 0;
+}
+
+.search {
+    float: right;
+}
+
+.pSearch {
+    width: 100%;
+    height: auto;
+    display: table;
+    float: right;
+    margin: 5px 0 0 0;
+}
+
+    .pSearch input,
+    .fRight input {
+        float: left;
+        border: 0;
+    }
+
+        .pSearch input#mod-search-searchword,
+        .fRight input#mod-search-searchword {
+            width: 160px;
+            height: 25px;
+            line-height: 25px;
+            -moz-box-shadow: inset 0 0 15px #999;
+            -webkit-box-shadow: inset 0 0 15px #999;
+            box-shadow: inset 0 0 15px #999;
+            padding: 0 10px;
+            color: #B4B4B4;
+            font-style: italic;
+        }
+
+    .pSearch form,
+    .fRight form {
+        width: auto;
+        float: right;
+    }
+.navMenu {
+    width: 100%;
+    height: auto;
+    display: table;
+    text-align: right;
+}
+
+    .navMenu ul.menu {
+        width: auto;
+        float: right;
+        margin: 10px 0 0 0;
+    }
+
+        .navMenu ul.menu li {
+            list-style: none;
+            display: inline-block;
+            float: left;
+            text-transform: uppercase;
+            font-size: 11px;
+            border-right: solid #000 1px;
+            font-weight: normal;
+            margin: 0 7px 0 0;
+            padding: 0 7px 0 0;
+        }
+
+            .navMenu ul.menu li,
+            .navMenu ul.menu li a {
+                color: #000000;
+            }
+
+                .navMenu ul.menu li:last-child {
+                    margin: 0;
+                    padding: 0;
+                    border: 0;
+                }
