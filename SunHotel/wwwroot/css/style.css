@@ -1,0 +1,111 @@
+.bg-azul{
+    background-color: lightblue;
+}
+
+.margin-top{
+    margin-top: 4%;
+}
+.margin-top-1{
+    margin-top: 8%;
+}
+
+.colornav{
+    background-color: rgb(252, 252, 84);
+    font-size: 150%;
+}
+
+.margin-down-reserva{
+    margin-bottom: 2%;
+}
+
+.sobrenosotros{
+    font-size: 150%;
+}
+
+.marginderecha{
+    margin-right: 60%;
+}
+
+.textgray{
+    color: gray;
+}
+
+.bg-gray{
+    background-color: rgb(194, 191, 191);
+}
+.imagenes{
+    align-items: center;
+}
+.margin-top-2{
+    margin-top: 15%;
+}
+
+.footer-centro{
+    text-align: center;
+    
+}
+.footer-derecha{
+    text-align: right;
+}
+
+.margin-izquierda-1{
+    margin-left: 15%;
+}
+
+.margin-down{
+    margin-bottom: 40%;
+}
+
+.underline{
+    text-decoration: none;
+    list-style: none;
+}
+
+.margin-izquierda{
+    margin-left: 3%;
+}
+
+.bg-azul-oscuro{
+    background-color: rgb(36, 36, 148);
+}
+.sunhotel{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 350%;
+}
+
+.central{
+    background-color: cyan;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.fuente{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 115%;
+}
+
+.margin-izquierda-2{
+    margin-left: 80%;
+}
+
+.botonderecha{
+    float: right;
+}
+
+.margin-izquierda-3{
+    margin-left: 26%;
+}
+
+.margin-derecha{
+    margin-right: 5%;
+}
+
+.margintop{
+    margin-top: 2%;
+}
+
+.margin-izquierda-4{
+    margin-left: 33%;
+}
+.login-color{
+    background-color: orange;
+}

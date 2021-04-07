@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SunHotel</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+    <header>
+        <div class="row">
+            <div class="col-2 margin-izquierda">
+                <a href="index.html"><img src="~/img/2021-04-05 20_47_26-Window.png"></a>
+            </div>
+
+            <div class="col-4">
+                <a href="index.html" class="underline text-dark"><h1 class="sunhotel margin-top-1">SunHotel</h1></a>
+            </div>
+
+            <div class="col-4">
+                <a href="https://optic.gob.do/nortic/"> <img class="margin-top-1" src="~/img/2021-03-16 15_04_04-Window.png"></a>
+                <a class="textgray underline" href="login.html"><h6 class="footer-derecha margin-derecha">Ingresar</h6></a>
+            </div>
+        </div>
+
+        <nav class="navbar colornav">
+            <a class="colornav margin-izquierda underline" href="#">Inicio</a>
+            <a class="textgray marginderecha underline" asp-action="Reserva">Reservas</a>
+
+        </nav>
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class=" margin-top navbar colornav">    </footer>
+    <div class="d-flex justify-content-center">
+        <div class="row ">
+            <div class="footer-centro">
+                <img src="~/img/2021-04-05 20_47_26-Window.png" width="100" height="100">
+                <a href="https://optic.gob.do/nortic/"> <img src="~/img/2021-03-16 22_19_16-Window.png" width="100" height="100"></a>
+                <a href="https://optic.gob.do/nortic/"> <img src="~/img/2021-03-16 22_11_09-Window.png" width="400" height="140" class="footer-derecha"></a>
+                <div class="footer-centro">
+                    <ul>
+                        <li class="underline">SunHotel Rep. Dominicana</li>
+                        <li class="underline">Calle Khuala Lumpur, Punta Cana</li>
+                        <li class="underline">Tel: 809-999-9999</li>
+                        <li class="underline">hotelsun@turismo.com.do</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

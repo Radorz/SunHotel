@@ -23,6 +23,23 @@ namespace SunHotel.Controllers
             return View();
         }
 
+        public IActionResult Resumen()
+        {
+            return View();
+        }
+        public IActionResult Reserva()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult Pago()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

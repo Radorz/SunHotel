@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Pago";
+}
+
+<div class="row">
+    <div class="col-md-2 margin-izquierda-3">
+        <img src="~/img/2021-04-05 20_47_26-Window.png">
+    </div>
+    <div class="col-4">
+        <h1 class="sunhotel margin-top-1">SunHotel</h1>
+    </div>
+    <div class="footer-centro">
+        <ul>
+            <li class="underline">SunHotel Rep. Dominicana</li>
+            <li class="underline">Calle Khuala Lumpur, Punta Cana</li>
+            <li class="underline">Tel: 809-999-9999</li>
+            <li class="underline">hotelsun@turismo.com.do</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4 margin-izquierda-4 footer-centro">
+        <img src="~/img/2021-03-17 01_11_31-TEMA.pdf.png" width="380" height="230">
+        <div class="margintop">
+            <form class="bg-gray">
+                <div class="mb-3">
+                    <label for="numeroTarjeta">Número de tarjeta:</label><br>
+                    <input type="text" size="35" name="numeroTar" id="numeroTarjeta">
+                </div>
+
+                <div class="mb-3">
+                    <label for="nombreTarjeta">Nombre de la tarjeta:</label><br>
+                    <input type="text" size="35" name="nombreTar" id="nombreTarjeta">
+                </div>
+
+                <div class="mb-3">
+                    <h6>Fecha de vencimiento</h6>
+                    <label for="mesVenc">Mes:</label>
+                    <input type="text" name="mes" id="mesVenc">
+
+                    <label for="mesAnn">Año:</label>
+                    <input type="text" name="ano" id="mesAnn">
+                </div>
+
+                <div class="mb-3">
+                    <label for="cvv">CVV:</label><br>
+                    <input type="text" size="10" name="cvvTar" id="cvv">
+                </div>
+
+                <div>
+                    <a class="btn btn-warning" href="resumen.html">Atrás</a>
+                    <a class="btn btn-success" href="index.html">Finalizar</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
