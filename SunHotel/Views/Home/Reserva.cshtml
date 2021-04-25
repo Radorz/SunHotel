@@ -1,88 +1,136 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model ViewModels.ReservaVM
+
+@{
+    ViewData["Title"] = "Reserva";
 }
 
 
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
-<h3 class="footer-centro">Para empezar la reserva ingrese los siguientes datos:</h3>
+<h3 class="footer-centro mt-3">Para empezar la reserva ingrese los siguientes datos:</h3>
 
-<div class="row">
-    <div class="margin-down-reserva col-2 bg-gray">
-        <h4 class="margin-izquierda">Información: </h4>
-        <p class="sobrenosotros margin-izquierda">
-            Para los siguientes tres meses, la ocupación
-            de las habitaciones es de un 93%. <br>
-            Le recomendamos hacer su reserva lo más antes
-            posible por si se llenan todas las habitaciones
-            antes de tiempo.
-        </p>
-    </div>
+<div class="d-flex justify-content-center">
+    @*<div class="margin-down-reserva col-2 bg-gray">
+            <h4 class="margin-izquierda">Información: </h4>
+            <p class="sobrenosotros margin-izquierda">
+                Para los siguientes tres meses, la ocupación
+                de las habitaciones es de un 93%. <br>
+                Le recomendamos hacer su reserva lo más antes
+                posible por si se llenan todas las habitaciones
+                antes de tiempo.
+            </p>
+        </div>*@
 
-    <div class="col-2">
-        <form class="margin-izquierda-2">
+    <div class="col-10 ">
+        <form method="post">
 
-            <div class="mb-3">
-                <label for="inputNombre">Nombre: </label>
-                <input type="text" name="nombre" id="inputNombre">
+            <div class="form-row ">
+                <div class="col-6">
+                    <label for="inputNombre">Nombres: </label>
+                    <input asp-for="Nombre" type="text" class="form-control">
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+
+                </div>
+
+                <div class=" col-6 mb-3">
+                    <label for="inputNombre">Apellidos: </label>
+                    <input asp-for="Apellido" type="text" class="form-control">
+                    <span asp-validation-for="Apellido" class="text-danger"></span>
+
+                </div>
+
+
+                <div class=" col-6 mb-3">
+                    <label for="inputNombre">Email: </label>
+                    <input asp-for="Email" type="email" class="form-control">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                </div>
+
+                <div class=" col-6 mb-3">
+                    <label for="inputNombre">Confirmar Email: </label>
+                    <input asp-for="RepeatEmail" type="email" class="form-control">
+                    <span asp-validation-for="RepeatEmail" class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label for="phone">Telefono: </label><br>
+                    <input asp-for="Telefono" type="tel" class="form-control" size="50">
+                    <span asp-validation-for="Telefono" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="inputCedula">Cédula:  </label><br>
+                    <input asp-for="Cedula" type="text" class="form-control">
+                    <span asp-validation-for="Cedula" class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3 col-6">
+                    <input type="date" asp-for="FechaLlegada" class="form-control" hidden>
+
+                </div>
+
+                <div class="mb-3 col-6">
+                    <input asp-for="FechaSalida" type="date" class="form-control" hidden>
+
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label for="inputAdultos">Adultos: </label>
+                    <input asp-for="Adultos" type="number" min="1" max="2" class="form-control">
+                    <span asp-validation-for="Adultos"  class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label for="inputNinos">Niños: </label> <br>
+                    <input asp-for="Ninos" min="0" max="2" type="number" class="form-control">
+                    <span asp-validation-for="Ninos" class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3 col-6 ">
+                    <input asp-for="TipoHabitacion" class="form-control" hidden value="@Model.TipoHabitacion">
+
+
+                </div>
+              
+
+
             </div>
-
-            <div class="mb-3">
-                <label for="inputCedula">Cédula:  </label><br>
-                <input type="text" name="cedula" id="inputCedula">
-            </div>
-
-            <div class="mb-3">
-                <label for="fechaLlegada">Fecha de llegada: </label>
-                <input type="date" name="fechaLlego" id="fechaLlegada">
-            </div>
-
-            <div class="mb-3">
-                <label for="fechaSalida">Fecha de Salida: </label>
-                <input type="date" name="fechaSale" id="fechaSalida">
-            </div>
-
-            <div class="mb-3">
-                <label for="inputAdultos">Adultos: </label>
-                <input type="text" name="adulto" id="inputAdultos">
-            </div>
-
-            <div class="mb-3">
-                <label for="inputNinos">Niños: </label> <br>
-                <input type="text" name="ninos" id="inputNinos">
-            </div>
-
-            <div class="mb-3">
-                <label for="tipoHabitacion">Tipo de habitación: </label>
-                <select name="selectHabitacion" id="tipoHabitacion">
-                    <option value="">Seleccione el tipo de habitación</option>
-                    <option value="individual">Individual</option>
-                    <option value="doble">Doble</option>
-                    <option value="triple">Triple</option>
-                    <option value="cuadruple">Cuádruple</option>
-                    <option value="suite">Suite</option>
-                    <option value="suiteEjecutiva">Suite Ejecutiva</option>
-                </select>
-            </div>
-
-            <div class="col-2">
-                <a class="btn btn-success" href="resumen.html">Continuar</a>
+            <div class="col-2 mb-3 w-100 float-right">
+                <button type="submit" class="btn btn-success float-right">Continuar</button>
             </div>
         </form>
-
     </div>
 
-    <div class="col-8 footer-derecha margin-top">
-        <div>
-            <a href="https://twitter.com/"><img src="~/img/twitter.png" width="40" height="40"></a>
-        </div>
+    @*<div class="col-8 footer-derecha margin-top">
+            <div>
+                <a href="https://twitter.com/"><img src="~/img/twitter.png" width="40" height="40"></a>
+            </div>
 
-        <div class="margintop">
-            <a href="https://www.instagram.com/"><img src="~/img/ig.png" width="40" height="40"></a>
-        </div>
+            <div class="margintop">
+                <a href="https://www.instagram.com/"><img src="~/img/ig.png" width="40" height="40"></a>
+            </div>
 
-        <div class="margintop">
-            <a href="https://www.facebook.com/"><img src="~/img/face.png" width="40" height="40"></a>
-        </div>
-    </div>
+            <div class="margintop">
+                <a href="https://www.facebook.com/"><img src="~/img/face.png" width="40" height="40"></a>
+            </div>
+        </div>*@
 
 </div>
+<!-- ^^  form code  ^^ -->
+<script>
+  
+    const phoneInputField = document.querySelector("#Telefono");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        preferredCountries: ["do", "us", "co", "mx"],
+
+    });
+</script>

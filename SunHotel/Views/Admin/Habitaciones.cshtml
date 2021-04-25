@@ -1,0 +1,184 @@
+﻿@model  ViewModels.HabitacionVM
+@{
+    ViewData["Title"] = "Habitaciones";
+    Layout = "~/Views/Shared/_Layoutnew.cshtml";
+
+
+}
+
+
+
+<br />
+<br />
+<br />
+
+<div class="text-center">
+
+    <h2 style="font-family: 'Zen Dots', cursive;">Habitaciones</h2>
+    <button type="button" class="btn btn-success float-right mb-2" data-toggle="modal" data-target="#exampleModal">Añadir</button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir habitacion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" asp-action="AñadirHabitaciones">
+                    <div asp-validation-summary="All" class="text-danger">
+                    </div>
+                    <div class="modal-body">
+
+
+
+
+                        <div class="mb-3">
+                            <label for="inputNombre">No. Habitacion: </label>
+                            <input type="number" asp-for="NoHabitacion" min="1" id="inputNombre" class="form-control" required>
+                            <span asp-validation-for="NoHabitacion" class="text-danger"></span>
+
+                        </div>
+                        <div class="mb-3">
+                            <label>Estilo de habitacion:</label>
+                            <select asp-for="IdTipoHabitacion" asp-items="@(new SelectList(ViewBag.tipos, "Idtipo","Nombre"))" class="custom-select">
+                                <option value="" selected>Ingresa Estilo de habitacion</option>
+                            </select>
+                            <span asp-validation-for="IdTipoHabitacion" class="text-danger"></span>
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label>Edificio:</label>
+                            <select asp-for="IdEdificio" asp-items="@(new SelectList(ViewBag.edificios, "IdEdificio","NumeroEdificio"))" class="form-control">
+                                <option value="" selected>Ingrese el edificio</option>
+                            </select>
+                            <span asp-validation-for="IdEdificio" class="text-danger"></span>
+
+
+                        </div>
+
+                  
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Añadir</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Estilo de Habitacion</th>
+                <th scope="col">Edificio</th>
+                <th scope="col">No Habitacion</th>
+                <th scope="col">Opciones</th>
+
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.list)
+            {
+                <tr>
+
+                    <th scope="row">@item.IdHabitacion</th>
+                    <td>@item.TipoHabitacion</td>
+                    <td>@item.IdEdificio</td>
+                    <td>@item.NoHabitacion</td>
+                    <td>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3"
+                                data-id="@item.IdHabitacion"  data-camas="@item.NoHabitacion">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2" data-id="@item.IdHabitacion"><i class="fas fa-trash"></i></button>
+
+                    </td>
+
+
+                </tr>
+            }
+            <!-- Modal -->
+
+
+        </tbody>
+
+    </table>
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-action="Borrarhab" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Borrar habitacion</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Seguro que desea borrar este tipo de habitacion</p>
+                        <input class="hola" type="hidden" asp-for="eliminar" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Borrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-action="Editarhab" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar  habitacion</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="inputNombre">Nombre: </label>
+                        <input type="number" asp-for="NoHabitacion" class="camas form-control"  required>
+                        <span asp-validation-for="NoHabitacion" class="text-danger"></span>
+
+
+                        <div class="mb-3">
+                            <label>Estilo de habitacion:</label>
+                            <select asp-for="IdTipoHabitacion" asp-items="@(new SelectList(ViewBag.tipos, "Idtipo","Nombre"))" class="custom-select">
+                                <option value="" selected>Ingresa Estilo de habitacion</option>
+                            </select>
+                            <span asp-validation-for="IdTipoHabitacion" class="text-danger"></span>
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label>Edificio:</label>
+                            <select asp-for="IdEdificio" asp-items="@(new SelectList(ViewBag.edificios, "IdEdificio","NumeroEdificio"))" class="form-control">
+                                <option value="" selected>Ingrese el edificio</option>
+                            </select>
+                            <span asp-validation-for="IdEdificio" class="text-danger"></span>
+
+
+                        </div>
+
+
+                        <input class="id" type="hidden" asp-for="editar" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>

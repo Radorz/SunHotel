@@ -7,104 +7,147 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" type="text/css" href="~/css/template.css">
+    
+    <style>
+    .w-custom{
+        width:75%;
+    }
+@@media (max-width: 600px) {
+    .w-custom {
+        width: 100%;
+    }
+  
+}</style>
 
 </head>
 <body>
-            <div class="bg1">
-                <div class="main-wrapp">
-                    <header>
+    <div class="bg1">
+        <header>
 
-                        <div class="headerBox">
-                            <div class="logo row">
-                                <div class="col-2 mr-3">
-                                    <a href="#" target="_self">
-                                        <!--[ESPECIFICAR LA RUTA AL INICIO DEL PORTAL]-->
-                                        <!--[SUSTITUIR ARCHIVO "logo.png" POR EL LOGO Y NOMBRE DE LA INSTITUCION]-->
-                                        <img src="~/img/2021-04-05 20_47_26-Window.png" width="160" height="130" title="[ESPECIFICAR EL NOMBRE DE LA IMAGEN]" alt="[ESPECIFICAR EL ATRIBUTO ALTERNATICO]">
-                                    </a>
-                                </div>
-                                <div class="col-4 ml-lg-5 mt-5">
-                                    <a href="index.html" class="text-decoration-none text-dark"><h1 class="sunhotel margin-top-1">SunHotel</h1></a>
-                                </div>
-                            </div><!--end logo-->
-                            <div class="headerBoxBox1">
-                                <div class="repDom"></div>
-                                <div class="pSearch">
-                                    <!--[COLOCAR BUSCADOR EN ESTA PARTE]-->
-                                    <div class="search">
-                                        <input name="search" type="text" id="mod-search-searchword">
-                                        <input name="search" type="image" src="~/img/searchButton.gif">
-                                    </div><!--end search-->
-                                </div><!--end pSearch-->
-                                <div class="navMenu">
-                                    <!--[COLOCAR EN ESTA PARTE EL MENU DE NAVEGACION FACIL]-->
-                                    <ul class="menu">
-                                        <li><a href="#">Inicio</a></li>
-                                        <li><a href="#">Mapa de sitio</a></li>
-                                        <li><a href="#">Contacto</a></li>
-                                    </ul><!--end menu-->
-                                </div><!--end navMenu-->
-                            </div><!--end headerBoxBox1-->
-                        </div><!--end headerBox-->
+            <div class="container-fluid  w-custom">
+                <div class="w-50 mx-auto ">
+                    <img src="~/img/escudo-RD.png" class="w-100 d-lg-none img-fluid" style="max-height: 40px !important;" alt="Escudo Dominicana" />
+                </div>
+                <div class="row">
+                    <div class="col mr-3 text-black">
 
-                        <div class="menu-h">
-                            <div class="menu-h-Box">
+                        <a asp-controller="Home" asp-action="Index" target="_self" class="text-decoration-none" style="color:black;">
+                            <!--[ESPECIFICAR LA RUTA AL INICIO DEL PORTAL]-->
+                            <!--[SUSTITUIR ARCHIVO "logo.png" POR EL LOGO Y NOMBRE DE LA INSTITUCION]-->
+                            <img src="~/img/logo.png"  height="145" title="Logo Sun Hotel" alt="Logo Sun Hotel">
+                            
+</a>
+                    </div>
+                    @*<div class="col ">
+                        <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-dark d-flex align-items-center"><h1 class="sunhotel margin-top-1">SunHotel</h1></a>
+                    </div>*@
+                    <div class="col d-none d-lg-block">
+                        <div class="">
+                            <div class="repDom w-100"></div>
+                            <div class="pSearch">
+                                <div class="search">
+                                    <input name="search" type="text" id="mod-search-searchword">
+                                    <input name="search" type="image" src="~/img/searchButton.gif">
+                                </div>
+                            </div>
+                            <div class="navMenu">
                                 <ul class="menu">
-                                    <li><a href="#" class="text-decoration-none">Inicio</a></li>
-                                    <li><a href="#" class="text-decoration-none">Ofertas</a></li>
+                                    <li><a asp-controller="Home" asp-action="Index">Inicio</a></li>
+                                    <li><a href="#">Mapa de sitio</a></li>
+                                    <li><a href="#">Contacto</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="navbar navbar-expand-lg navbar-light rounded shadow-sm " style="background-color: rgb(252, 252, 84);">
+                    <a class="navbar-brand" href="#"><br /></a>
 
-                                </ul><!--end menu-->
-                            </div><!--end menu-h-Box-->
-                        </div><!--end menu-h-->
-                    </header>
-                    <div class="contentBoxMaster">
-                        <div class="contentBoxMasterBox1">
-                            <div class="contentMaster">
-
-                                <main role="main">
-                                    @RenderBody()
-                                </main>
-
-                            </div><!--end contentMaster-->
-                        </div><!--end contentBoxMasterBox1-->
-                    </div><!--end contentBoxMaster-->
-                </div><!--end main-wrapp-->
-    </div><!--end bg1-->
-    
-    
-            <footer>
-                <div class="main-wrapp">
-                    <div class="contentBoxMasterBox1" id="footer">
-
-                        <ul id="linesLogos">
-                            <li id="line"></li>
-                            <li id="logo1"></li><!--[SUSTITUIR LA IMAGEN "logoFooter1.gif" POR EL LOGO DE LA INSTITUION]-->
-                            <li id="separator"></li>
-                            <li id="logo2"></li><!--[ESTE ES EL ESCUDO DE LA REPUBLICA DOMINICANA]-->
-                            <li id="line"></li>
-                        </ul><!--end linesLogos-->
-
-                        <div class="clr"></div>
-
-                        <ul id="infoFooter">
-                            <li id="space">&nbsp;</li>
-                            <li id="info">
-                                <a href="#">[NOMBRE COMPLETO DE LA INSTITUCION CON LAS SIGLAS AL FINAL]</a><!--[ESPECIFICAR LA RUTA AL INICIO DEL PORTAL]--><br>
-                                [DIRECCION COMPLETA DE LA INSTITUCION]<br>
-                                [TELEFONOS Y FAX DE LA INSTITUCION]<br>
-                                <span>&copy; [AÑO ACTUAL] Todos los Derechos Reservados</span>
-                            </li><!--end info-->
-                            <li id="space">
-                                <img src="~/img/nortic.png" alt="" title="" /><!--[RESERVADO PARA SELLO DE CERTIFICACION DE LA NORTIC A2]-->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Inicio <span class="sr-only">(current)</span></a>
                             </li>
-                        </ul><!--end infoFooter-->
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="ListHabitacion">HABITACIONES & SUITES</a>
+                            </li>
 
-                    </div><!--end contentBoxMasterBox1-->
-                </div><!--end main-wrapp-->
-            </footer>
+                        </ul>
+                        <form class="d-flex d-lg-none">
+                            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </div><!--end logo-->
+
+
+
+        </header>
+               <div class="container-fluid w-custom">
+
+            <main role="main">
+                @RenderBody()
+            </main>
+
+        </div><!--end contentMaster-->
+    </div><!--end main-wrapp-->
+   
+
+
+    <footer>
+        <div class="container-fluid p-3">
+
+            <div class="d-none d-xl-block">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-sm">
+                            <img src="~/img/footerLines.png" alt="Alternate Text" />
+                        </div>
+                        <div class="col-sm mr-1">
+                            <img src="~/img/logosm.png" width="85" height="85" alt="Alternate Text" />
+
+                        </div>
+                        <div class="col-sm-1">
+                            <img src="~/img/separator.gif" alt="Alternate Text" />
+                        </div>
+                        <div class="col-sm">
+                            <img src="~/img/footerRd.gif" alt="Alternate Text" />
+                        </div>
+                        <div class="col-sm">
+                            <img src="~/img/footerLines.png" alt="Alternate Text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100 container position-relative mt-3">
+                <div class="m-0 mx-auto ">
+                    <img class="d-xl-none mx-auto d-block img-fluid" src="~/img/logosm.png" alt="Alternate Text" />
+
+                    <p class="text-center">
+                        <a href="#" class="text-decoration-none text-dark">SunHotel Rep. Dominicana</a><!--[ESPECIFICAR LA RUTA AL INICIO DEL PORTAL]--><br>
+                        Calle Khuala Lumpur, Punta Cana<br>
+                        Tel: 809-999-9999<br />
+                        <span>&copy; 2021 - Todos los Derechos Reservados</span>
+                    </p><!--end info-->
+
+                </div>
+                    <div class="position-absolute " style="width:83px; height:100px; right:40px; bottom:15px " >
+                        <img src="~/img/sello_nortic.png" alt="" class="d-none d-xl-block" title="" width="83" height="100" /><!--[RESERVADO PARA SELLO DE CERTIFICACION DE LA NORTIC A2]-->
+                    </div>
+            </div>
+            <!--end infoFooter-->
+
+        </div><!--end contentBoxMasterBox1-->
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <partial name="_ValidationScriptsPartial" />
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,183 @@
+﻿@model List<ViewModels.ReservaAdminVM>
+
+@{
+    ViewData["Title"] = "Reserva";
+    Layout = "~/Views/Shared/_Layoutnew.cshtml";
+
+}
+<link href="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+    .text-secondary-d1 {
+        color: #728299 !important;
+    }
+
+    .page-header {
+        padding-top: .5rem;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .page-title {
+        padding: 0;
+        margin: 0;
+        font-size: 1.75rem;
+        font-weight: 300;
+    }
+
+    .brc-default-l1 {
+        border-color: #dce9f0 !important;
+    }
+
+    .ml-n1, .mx-n1 {
+        margin-left: -.25rem !important;
+    }
+
+    .mr-n1, .mx-n1 {
+        margin-right: -.25rem !important;
+    }
+
+    .mb-4, .my-4 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0,0,0,.1);
+    }
+
+    .text-grey-m2 {
+        color: #888a8d !important;
+    }
+
+    .text-success-m2 {
+        color: #86bd68 !important;
+    }
+
+    .font-bolder, .text-600 {
+        font-weight: 600 !important;
+    }
+
+    .text-110 {
+        font-size: 110% !important;
+    }
+
+    .text-blue {
+        color: #478fcc !important;
+    }
+
+    .pb-25, .py-25 {
+        padding-bottom: .75rem !important;
+    }
+
+    .pt-25, .py-25 {
+        padding-top: .75rem !important;
+    }
+
+    .bgc-default-tp1 {
+        background-color: rgba(121,169,197,.92) !important;
+    }
+
+    .bgc-default-l4, .bgc-h-default-l4:hover {
+        background-color: #f3f8fa !important;
+    }
+
+    .page-header .page-tools {
+        -ms-flex-item-align: end;
+        align-self: flex-end;
+    }
+
+    .btn-light {
+        color: #757984;
+        background-color: #f5f6f9;
+        border-color: #dddfe4;
+    }
+
+    .w-2 {
+        width: 1rem;
+    }
+
+    .text-120 {
+        font-size: 120% !important;
+    }
+
+    .text-primary-m1 {
+        color: #4087d4 !important;
+    }
+
+    .text-danger-m1 {
+        color: #dd4949 !important;
+    }
+
+    .text-blue-m2 {
+        color: #68a3d5 !important;
+    }
+
+    .text-150 {
+        font-size: 150% !important;
+    }
+
+    .text-60 {
+        font-size: 60% !important;
+    }
+
+    .text-grey-m1 {
+        color: #7b7d81 !important;
+    }
+
+    .align-bottom {
+        vertical-align: bottom !important;
+    }
+
+    @@media print {
+
+        .pr {
+            display: none;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 550px;
+        }
+    }
+</style>
+<h2 class="text-center mt-3" style="font-family: 'Zen Dots', cursive;">Reservaciones</h2>
+
+<div class="table-responsive text-center">
+    <table class="table table-striped table-borderless border-0 border-b-2 brc-default-l1">
+        <thead class="bg-none bgc-default-tp1">
+            <tr class="text-white">
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Fecha reserva</th>
+                <th>Huespedes</th>
+                <th>Tipo Habitacion</th>
+                <th>Pago total</th>
+                <th>Info</th>
+
+
+            </tr>
+        </thead>
+
+        <tbody class="text-95 text-secondary-d3">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Nombre , @item.Apellido</td>
+                    <td> @item.Email</td>
+                    <td>@item.Fechaereserva</td>
+                    <td> @item.Huespedes</td>
+                    <td> @item.TipoHabitacion</td>
+                    <td> @String.Format("{0:C}", Convert.ToDecimal(item.pagototal)) </td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

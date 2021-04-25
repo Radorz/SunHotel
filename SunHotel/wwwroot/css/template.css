@@ -13,7 +13,7 @@ img{ border:0; }
 .clr5{ height:25px; clear:both; }
 .clr6{ height:7px; clear:both; }
 
-.bg1{ width:100%; height:auto; display:table; background-color:#ffff; }
+.bg1{  background-color:#ffff; }
 
 /*DIMENSION GENERAL DEL PORTAL*/
 .main-wrapp{ width:1024px; height:auto; display:table; margin:0 auto; }
@@ -25,6 +25,13 @@ img{ border:0; }
 .logo a{ height:130px; display:block; margin:0; padding:0; }
 .headerBoxBox1{ width:504px; height:130px; display:table; float:left; text-align:right; }
 .repDom{ width:100%; height:34px; background:url(../img/repDom.png) no-repeat top right; float:right; margin:20px 0 0 0; }
+.repDomcom {
+    width: 100%;
+    height: 34px;
+    background: url(../img/repDom.png) no-repeat;
+
+}
+
 .search{ float:right; }
 .pSearch{ width:100%; height:auto; display:table; float:right; margin:5px 0 0 0; }
 .pSearch input,
@@ -48,7 +55,7 @@ img{ border:0; }
 .menu-h ul.menu li{ height:20px; padding:0 9px 0 0; margin:0 9px 0 0; list-style:none; display:inline-block; float:left; font-size:16px; border-right:solid #0B4B92 2px; text-transform:uppercase; }
 .menu-h ul.menu li.parent{ background:url(../img/parent.png) no-repeat 97% 3px; padding:0 22px 0 0; }
 .menu-h ul.menu li,
-.menu-h ul.menu li a{ color:#0B4B92; }
+.menu-h ul.menu li a{ color:black; }
 .menu-h ul.menu li.active{ text-decoration:underline; }
 .menu-h ul.menu li a{ display:block; }
 .menu-h ul.menu li:hover ul{ display:block; }
@@ -76,16 +83,16 @@ img{ border:0; }
 
 /*PROPIEDADES DEL PIE DE PAGINA*/
 ul#linesLogos,
-ul#infoFooter li#info ul.menu{ width:auto; display:table; margin:0 auto; }
-ul#linesLogos li{ height:77px; list-style:none; display:inline-block; float:left; }
+ul#infoFooter li#info ul.menu{  }
+ul#linesLogos li{  }
 ul#linesLogos li:first-child{ margin:0 30px 0 0; }
 ul#linesLogos li:last-child{ margin:0 0 0 30px; }
-ul#linesLogos li#line{ width:361px; background:url(../img/footerLines.png) no-repeat 0 35px; }
-ul#linesLogos li#logo1,
-ul#linesLogos li#logo2{ width:79px;height:77px; }
-ul#linesLogos li#logo1{ background:url('../img/sunlogomin.png') no-repeat; }
-ul#linesLogos li#logo2{ background:url(../img/footerRd.gif) no-repeat; }
-ul#linesLogos li#separator{ width:39px; background:url(../img/separator.gif) no-repeat; }
+#line{  background:url(../img/footerLines.png) no-repeat 0 35px; }
+#logo1,
+#logo2{ }
+#logo1{ background:url('../img/sunlogomin.png') no-repeat; }
+#logo2{ background:url(../img/footerRd.gif) no-repeat; }
+#separator{ background:url(../img/separator.gif) no-repeat; }
 ul#infoFooter{ width:auto; display:table; margin:25px auto 0 auto; }
 ul#infoFooter li{ height:auto; list-style:none; display:inline-block; float:left; }
 ul#infoFooter li#space{ width:262px; text-align:right; }

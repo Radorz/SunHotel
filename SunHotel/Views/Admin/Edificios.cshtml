@@ -1,0 +1,99 @@
+﻿@model ViewModels.EdificioVM
+
+@{
+    ViewData["Title"] = "Edificios";
+    Layout = "~/Views/Shared/_Layoutnew.cshtml";
+
+
+}
+
+
+
+
+<br />
+<br />
+<br />
+
+<div>
+
+
+
+    <h2 class="text-center" style="font-family: 'Zen Dots', cursive;">Edificios</h2>
+    <table class="table text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">No. Edificio</th>
+                <th scope="col">Opciones</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.list)
+            {
+                <tr>
+                    <th scope="row">@item.IdEdificio</th>
+                    <td>@item.NumeroEdificio</td>
+                    <td>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3"
+                                data-id="@item.IdEdificio" data-camas="@item.NumeroEdificio">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2" data-id="@item.IdEdificio"><i class="fas fa-trash"></i></button>
+
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-action="BorrarEdi" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Borrar Edifcio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Seguro que desea borrar este Edificio, se borraran todas las habitaciones que pertenecen a este edificio</p>
+                        <input class="hola" type="hidden" asp-for="eliminar" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Borrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-action="Editarhab" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Edifcio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="inputNombre">Nombre: </label>
+                        <input type="number" asp-for="NumeroEdificio" class="camas form-control" required>
+                        <span asp-validation-for="NumeroEdificio" class="text-danger"></span>
+
+
+                        <input class="id" type="hidden" asp-for="editar" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

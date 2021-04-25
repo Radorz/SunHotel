@@ -1,0 +1,74 @@
+﻿@model List<ViewModels.ListHomeVM>
+@{
+    ViewData["Title"] = "Todas las Habitaciones";
+}
+<div class=" w-100 mb-5 mt-3 ">
+    <div class="row row-cols-1 row-cols-md-2">
+
+        @foreach (var item in Model)
+        {
+            @*
+
+                <div class="card" style="width: 80%;height: 20%; margin-top: 0">
+                    <div style="height: 20%;">
+                        <img src="@photopath" asp-append-version="true" class="card-img-top img-fluid" alt="">
+                    </div>
+                    <div class="card-body">
+
+                            <h5 class="card-title">
+                                @item.Nombre
+                            </h5>
+
+
+                        <br />
+                        <a class="btn btn-outline-info  btn-lg w-100 text-decoration-none" asp-action="Habitacion" asp-route-id="@item.id">Detalles</a>
+                    </div>
+
+                </div>*@
+        var photopath = "~/img/habitacion/" + (!string.IsNullOrEmpty(item.Img) ? @item.Img : "Habitacion popular 3.jpeg");
+            <div class="col mb-4">
+                <div class="card">
+                    <img src="@photopath" asp-append-version="true" class="card-img-top img-fluid" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            @item.Nombre
+                        </h5>
+                        <a class="btn btn-outline-info  btn-lg w-100 text-decoration-none" asp-action="Habitacion" asp-route-id="@item.id">Detalles</a>
+                    </div>
+                </div>
+            </div>
+            
+        }
+    </div>
+</div>
+
+<script src="~/js/clamp.js"></script>
+
+<script>
+
+    var module = document.getElementById("module");
+    console.log(module);
+
+    $clamp(module, { clamp: 2 });
+</script>
+
+@*<div class="card" style="width: 15rem;height: 20rem; margin-top: 0">
+        <img src="@photopath" asp-append-version="true" width="150" height="150" class="card-img-top" alt="">
+
+        <div class="card-body">
+            <h5 class="card-title">@item.Nombre</h5>
+            <br />
+            <a class="btn btn-outline-info  btn-lg w-100 text-decoration-none" asp-action="Habitacion" asp-route-id="@item.id">Detalles</a>
+        </div>
+
+    </div>*@
+
+
+
+
+
+
+
+
+
+

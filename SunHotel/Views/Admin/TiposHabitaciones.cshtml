@@ -1,0 +1,199 @@
+﻿@model ViewModels.TipoHabitacioneVM
+@{
+    ViewData["Title"] = "Tipos de Habitaciones";
+    Layout = "~/Views/Shared/_Layoutnew.cshtml";
+
+
+}
+
+    
+
+<br />
+<br />
+<br />
+<div class="text-center">
+
+
+    <script src='https://cdn.tiny.cloud/1/eayty4xxjbudr2spravfjhwkgfjrl86585tot9jlzhbjw9u6/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+    </script>
+    <script>
+        tinymce.init({
+            selector: '#inputdescripcion'
+        });
+    </script>
+    <h2 style="font-family: 'Zen Dots', cursive;">Tipos de Habitaciones</h2>
+    <button type="button" class="btn btn-success float-right mb-2" data-toggle="modal" data-target="#exampleModal">Añadir</button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añador tipo de habitacion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" asp-action="AñadirTipo" enctype="multipart/form-data">
+                    <div asp-validation-summary="All" class="text-danger">
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label for="inputNombre">Nombre: </label>
+                            <input type="text" asp-for="Nombre" name="nombre" id="inputNombre" class="form-control" required>
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="inputNombre">Descripcion: </label>
+                            <textarea asp-for="@Model.Descripcion" id="inputdescripcion" > </textarea>
+                            <span asp-validation-for="@Model.Descripcion" class="text-danger"></span>
+
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="inputNombre">Cantidad de camas: </label>
+                            <input type="number" asp-for="@Model.CantCamas" max="9" min="1" id="inputNombre" class="form-control" required>
+                            <span asp-validation-for="@Model.CantCamas" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="inputNombre">Precio por noche: </label>
+                            <input type="number" asp-for="@Model.PrecioNoche" min="1" id="inputNombre" class="form-control" required>
+                            <span asp-validation-for="@Model.PrecioNoche" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="inputNombre"> Cantidad Maxima de huespedes: </label>
+                            <input type="number" max="100" asp-for="@Model.MaxHuespedes" min="1" id="inputNombre" class="form-control" required>
+                            <span asp-validation-for="@Model.MaxHuespedes" class="text-danger"></span>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputNombre"> Cantidad Maxima de huespedes: </label>
+                            <input id="input-id" type="file" asp-for="@Model.photo" multiple accept="image/*" required>
+                            <span asp-validation-for="@Model.photo" class="text-danger"></span>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Añadir</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio Noche</th>
+                <th scope="col">Cantidad Camas</th>
+                <th scope="col">Max Huespedes</th>
+                <th scope="col">Opciones</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.List)
+            {
+                <tr>
+
+                    <th scope="row">@item.IdTipoHabitacion</th>
+                    <td>@item.Nombre</td>
+                    <td>@item.PrecioNoche</td>
+                    <td>@item.CantCamas</td>
+                    <td>@item.MaxHuespedes</td>
+                    <td>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3" 
+                                data-id="@item.IdTipoHabitacion" data-nombre="@item.Nombre" data-precio="@item.PrecioNoche" data-camas="@item.CantCamas"
+                               data-huespedes="@item.MaxHuespedes"> 
+                        <i class="fas fa-pencil-alt"></i></button>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2" data-id="@item.IdTipoHabitacion"><i class="fas fa-trash"></i></button>
+
+                    </td>
+
+
+                </tr>
+            }
+            <!-- Modal -->
+
+
+        </tbody>
+
+    </table>
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-action="Borrartipo" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Borrar tipo de habitacion</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Seguro que desea borrar este tipo de habitacion</p>
+                        <input class="hola" type="hidden" asp-for="eliminar" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Borrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-action="Editartipo" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar tipo de habitacion</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <label for="inputNombre">Nombre: </label>
+                            <input type="text" asp-for="Nombre" class="nombre form-control" name="nombre" id="inputNombre"  required>
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+
+
+                             <label for="inputNombre">Cantidad de camas: </label>
+                            <input type="number" class="cama form-control" asp-for="@Model.CantCamas" max="9" min="1" id="inputNombre"  required>
+                            <span asp-validation-for="@Model.CantCamas" class="text-danger"></span>
+
+
+                            <label for="inputNombre">Precio por noche: </label>
+                            <input type="number" class="precio form-control" asp-for="@Model.PrecioNoche" min="1 id="inputNombre"  required>
+                            <span asp-validation-for="@Model.PrecioNoche" class="text-danger"></span>
+
+
+                            <label for="inputNombre"> Cantidad Maxima de huespedes: </label>
+                            <input type="number" class="huespedes form-control" max="100" asp-for="@Model.MaxHuespedes" min="1 id="inputNombre"  required>
+                            <span asp-validation-for="@Model.MaxHuespedes" class="text-danger"></span>
+
+                        <input class="id" type="hidden" asp-for="editar" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#input-id").fileinput();
+    </script>
+</div>

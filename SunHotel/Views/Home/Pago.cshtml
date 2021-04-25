@@ -1,56 +1,114 @@
-﻿@{
+﻿@model ViewModels.PagoVM
+@{
     ViewData["Title"] = "Pago";
 }
 
-<div class="row">
-    <div class="col-md-2 margin-izquierda-3">
-        <img src="~/img/2021-04-05 20_47_26-Window.png">
-    </div>
-    <div class="col-4">
-        <h1 class="sunhotel margin-top-1">SunHotel</h1>
-    </div>
-    <div class="footer-centro">
-        <ul>
-            <li class="underline">SunHotel Rep. Dominicana</li>
-            <li class="underline">Calle Khuala Lumpur, Punta Cana</li>
-            <li class="underline">Tel: 809-999-9999</li>
-            <li class="underline">hotelsun@turismo.com.do</li>
-        </ul>
-    </div>
-</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 
-<div class="row">
-    <div class="col-4 margin-izquierda-4 footer-centro">
-        <img src="~/img/2021-03-17 01_11_31-TEMA.pdf.png" width="380" height="230">
+<div class="row d-flex justify-content-center mt-3">
+    <img src="~/img/2021-03-17 01_11_31-TEMA.pdf.png" width="380" height="230">
+
+    <div class="col-4 footer-centro">
         <div class="margintop">
-            <form class="bg-gray">
+            <form asp-action="Pago" class="bg-gray" method="post">
                 <div class="mb-3">
                     <label for="numeroTarjeta">Número de tarjeta:</label><br>
-                    <input type="text" size="35" name="numeroTar" id="numeroTarjeta">
+                    <input type="text" size="35" asp-for="numeracion" class="form-control">
+                    <span asp-validation-for="numeracion" class="text-danger"></span>
+
                 </div>
 
                 <div class="mb-3">
-                    <label for="nombreTarjeta">Nombre de la tarjeta:</label><br>
-                    <input type="text" size="35" name="nombreTar" id="nombreTarjeta">
+                    <label for="nombreTarjeta">Titular la tarjeta:</label><br>
+                    <input type="text" size="35" asp-for="titular" class="form-control">
+                    <span asp-validation-for="titular" class="text-danger"></span>
+
                 </div>
 
                 <div class="mb-3">
-                    <h6>Fecha de vencimiento</h6>
-                    <label for="mesVenc">Mes:</label>
-                    <input type="text" name="mes" id="mesVenc">
+                    <h6>Fecha de vencimiento:</h6>
+                    <div class="row border border-light pt-2 pb-2">
+                        <div class="col mr-0">
+                            <select class="form-control" asp-for="fechavencimientoMes">
+                                <option value="" selected>MM</option>
+                                <option value="1">01</option>
+                                <option value="2">02</option>
+                                <option value="3">03</option>
+                                <option value="4">04</option>
+                                <option value="5">05</option>
+                                <option value="6">06</option>
+                                <option value="7">07</option>
+                                <option value="8">08</option>
+                                <option value="9">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
 
-                    <label for="mesAnn">Año:</label>
-                    <input type="text" name="ano" id="mesAnn">
+                            </select>
+                            <span asp-validation-for="fechavencimientoMes" class="text-danger"></span>
+
+                        </div>
+                        <span style="font-size:26px" class="mt-0">
+                            /
+                        </span>
+                        <div class="col ml-0">
+                            <select asp-for="fechavencimientoAño" class="form-control">
+                                <option value="" selected>YY</option>
+                                <option value="1">21</option>
+                                <option value="2">22</option>
+                                <option value="3">23</option>
+                                <option value="4">24</option>
+                                <option value="5">25</option>
+                                <option value="6">26</option>
+                                <option value="7">27</option>
+                                <option value="8">28</option>
+                                <option value="9">29</option>
+                                <option value="10">30</option>
+                                <option value="11">31</option>
+                                <option value="12">32</option>
+
+                            </select>
+                            <span asp-validation-for="fechavencimientoAño" class="text-danger"></span>
+
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="mb-3">
                     <label for="cvv">CVV:</label><br>
-                    <input type="text" size="10" name="cvvTar" id="cvv">
-                </div>
+                    <input type="number" size="10" asp-for="CVV" max="999" min="100" class="form-control">
+                    <span asp-validation-for="CVV" class="text-danger"></span>
 
-                <div>
+                </div>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal8" id="foo" hidden>
+                </button>
+
+                <div class="modal fade" id="exampleModal8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header alert-success">
+                                <h5 class="modal-title" id="exampleModalLabel">Pago procesado</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body alert-success">
+                                <input type="text" name="names" id="names" value="@ViewBag.mostrar" hidden />
+                                <p>Tu reserva ha sido completada con exito revise su correo electronico para ver visualizar su comprobante</p>
+                                <hr>
+                                <p class="mb-0">Gracias por preferirnos!.</p>
+                            </div>
+                            <div class="modal-footer alert-success">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <a class="btn btn-info" asp-controller="Home" asp-action="Index">Entendido</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
                     <a class="btn btn-warning" href="resumen.html">Atrás</a>
-                    <a class="btn btn-success" href="index.html">Finalizar</a>
+                    <button type="submit" class="btn btn-success">Finalizar</button>
                 </div>
 
             </form>
@@ -58,3 +116,11 @@
     </div>
 
 </div>
+<script>
+
+    $(document).ready(function () {
+        if ($("#names").val() == "block") {
+            $("#foo").trigger("click");
+        }
+    });
+</script>
