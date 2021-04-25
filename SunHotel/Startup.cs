@@ -55,6 +55,9 @@ namespace SunHotel
                     RequiredLength = 6
                 };
 
+                services.AddControllers();
+
+
             }).AddEntityFrameworkStores<ba4cpg3zvekknrm1lhokContext>().AddDefaultTokenProviders();
             services.Configure<IdentityOptions>(options =>
             {
