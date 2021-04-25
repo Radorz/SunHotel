@@ -279,10 +279,7 @@ namespace SunHotel.Controllers
                         var reservas = await _reservaRepository.GetAll();
                         var res = reservas.Where(a => a.IdHabitacion == item.IdHabitacion).ToList();
 
-                        //foreach(var it in res)
-                        //{
-                        //    await _reservaRepository.
-                        //}
+                     
 
                         await _HabitacionRepository.Delete(item.IdHabitacion);
                     }
