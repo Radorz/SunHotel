@@ -293,6 +293,19 @@ namespace SunHotel.Controllers
 
 
         }
+        [HttpPost]
+        public async Task<IActionResult> Añadiredificio(EdificioVM vm)
+        {
+            if (ModelState.IsValid)
+            {
+                var edi = new Edificio();
+                edi.NumeroEdificio = vm.NumeroEdificio;
+              await  _EdificiosRepository.Add(edi);
+                return RedirectToAction("Edificios");
+            }
+            return View();
+
+        }
 
         public async Task<IActionResult> Logout()
         {
