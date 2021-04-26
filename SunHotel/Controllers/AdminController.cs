@@ -353,12 +353,13 @@ namespace SunHotel.Controllers
                 var hab = await _tiposHabitacionRepository.GetbyId(item.IdTipoHabitacion.Value);
                 vm.TipoHabitacion = hab.Nombre;
                 var pago = await _pagoRepository.GetbyId(item.IdPago.Value);
-                vm.pagototal = pago.Cantidadpagar.ToString();
-                vm.Fechaepago = item.FechaPago.Value;
-
+                vm.pagototal = String.Format("{0:C}",pago.Cantidadpagar);
+                vm.Fechaepago = item.FechaPago.Value.ToString("dd MMMM yyyy");
+                vm.Cedula = item.Cedula;
+                vm.Telefono = String.Format("{0:(###) ###-####}",Convert.ToUInt64( item.Telefono));
                 vms.Add(vm);
     }
-            vms.OrderByDescending(a => a.Fechaepago);
+            vms.OrderByDescending(a => Convert.ToDateTime(a.Fechaepago));
             return View(vms);
 
         }

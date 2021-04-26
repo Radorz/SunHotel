@@ -18,7 +18,7 @@ namespace ViewModels
         public string Telefono { get; set; }
 
         public string Fechaereserva { get; set; }
-        public DateTime Fechaepago { get; set; }
+        public string Fechaepago { get; set; }
 
 
         public int? Huespedes { get; set; }

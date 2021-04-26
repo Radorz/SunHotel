@@ -40,7 +40,7 @@ namespace ViewModels
         public int? Adultos { get; set; }
         [Required(ErrorMessage = "La cantidad de Niños es requerido")]
 
-        public int? Ninos { get; set; }
+        public int? Niños { get; set; }
         [Required(ErrorMessage = "Estilo de habitacion es requerido")]
 
         public string TipoHabitacion { get; set; }

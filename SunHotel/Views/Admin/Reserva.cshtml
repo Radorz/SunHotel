@@ -146,10 +146,14 @@
         }
     }
 </style>
+<br />
+<br />
+<br />
+
 <h2 class="text-center mt-3" style="font-family: 'Zen Dots', cursive;">Reservaciones</h2>
 
-<div class="table-responsive text-center">
-    <table class="table table-striped table-borderless border-0 border-b-2 brc-default-l1">
+<div class="table-responsive mt-5 text-center">
+    <table class="table  table-striped table-borderless border-0 border-b-2 brc-default-l1">
         <thead class="bg-none bgc-default-tp1">
             <tr class="text-white">
                 <th>Nombre</th>
@@ -173,11 +177,69 @@
                     <td>@item.Fechaereserva</td>
                     <td> @item.Huespedes</td>
                     <td> @item.TipoHabitacion</td>
-                    <td> @String.Format("{0:C}", Convert.ToDecimal(item.pagototal)) </td>
+                    <td> @item.pagototal</td>
+                    <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal9" 
+                                data-nombre="@item.Nombre"
+                                data-apellido="@item.Apellido"
+                                data-email="@item.Email"
+                                data-cedula="@item.Cedula"
+                                data-telefono="@item.Telefono"
+                                data-fechareserva="@item.Fechaereserva"
+                                data-fechadepago="@item.Fechaepago"
+                                data-huespedes="@item.Huespedes"
+                                data-tipohabitacion="@item.TipoHabitacion"
+                                data-pagototal="@item.pagototal"><i class="fas fa-info-circle" ></i></button></td>
 
 
                 </tr>
             }
         </tbody>
     </table>
+</div>
+<div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="Editartipo" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <h4>Nombre:</h4>
+                        <p class="nombre">
+                         <h4>Apellido:</h4>
+                        <p class="apellido">
+                         <h4>Email:</h4>
+                        <p class="email">
+
+                        <h4>Cedula:</h4>
+                        <p class="cedula">
+                        <h4>Telefono:</h4>
+                        <p class="telefono">
+                         <h4>Fecha De reserva:</h4>
+                        <p class="fechareserva">
+                         <h4>Fecha De pago:</h4>
+                        <p class="fechapago">
+                            <h4>Huespedes:</h4>
+                        <p class="huespedes">
+                            <h4>Tipo de Habitacion:</h4>
+                        <p class="tipohabitacion">
+                            <h4>Pago total:</h4>
+                        <p class="pagototal">
+                    </div>
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

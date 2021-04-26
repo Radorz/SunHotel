@@ -33,7 +33,7 @@ namespace SunHotel
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<ba4cpg3zvekknrm1lhokContext>(options => options.UseMySql(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<ba4cpg3zvekknrm1lhokContext>(options => options.UseMySql(Configuration.GetConnectionString("Default"), x => x.EnableRetryOnFailure()));
             services.AddAutoMapper(typeof(AutomapperConfinew).GetTypeInfo().Assembly);
             services.AddSession(so =>
 
