@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EmailHandler;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -299,18 +300,21 @@ namespace SunHotel.Controllers
             }
             return View(vm);
         }
-
-        public async Task<IActionResult> validatehuespedes(int? Adultos, int? Ninos, string TipoHabitacion)
+        [AllowAnonymous]
+        public async Task<IActionResult> validatehuespedes(int? Adultos, int? Niños, string TipoHabitacion)
         {
-
+            if (!Niños.HasValue)
+            {
+                Niños = 0;
+            }
             var tipo = await _reservaRepository.getbyname(TipoHabitacion);
             if (tipo != null)
             {
-                if ( (Adultos.Value + Ninos.Value)> tipo.MaxHuespedes)
+                if ( (Adultos.Value + Niños.GetValueOrDefault())> tipo.MaxHuespedes)
                 {
-                    return Json(data: "La cantidad maxima de huespedes es: " +  tipo.MaxHuespedes.ToString());
+                    return Json(data: "La cantidad maxima de huespedes para: " + TipoHabitacion +" es: " +  tipo.MaxHuespedes.ToString());
                 }
-                return Json(data: false);
+                return Json(data: true);
 
             }
             return Json(data: false);

@@ -9,7 +9,7 @@ namespace ViewModels
 {
     public  class PagoVM
     {
-
+        [Required(ErrorMessage = "La tarjeta de credito es requerida")]
         [CreditCard(ErrorMessage ="No es una tarjeta valida")]
         public string numeracion { get; set; }
         [Required(ErrorMessage = "Titular es requerido")]

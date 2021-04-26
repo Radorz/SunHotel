@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using Microsoft.AspNetCore.Mvc;
 #nullable disable
 
 namespace ViewModels
@@ -17,7 +17,7 @@ namespace ViewModels
         [Required(ErrorMessage = "El Email  es requerido")]
         [EmailAddress(ErrorMessage = "Ingresa un Email valido")]
         public string Email { get; set; }
-        [Compare("Email",ErrorMessage =" Los Emails no coinciden")]
+        [System.ComponentModel.DataAnnotations.Compare("Email",ErrorMessage =" Los Emails no coinciden")]
         [Required(ErrorMessage = "El Confirmar Email  es requerido")]
 
         public string RepeatEmail { get; set; }
@@ -39,6 +39,7 @@ namespace ViewModels
         public DateTime? FechaSalida { get; set; }
         [Required(ErrorMessage = "La cantidad de Adultos es requerido")]
 
+        [Remote(action: "validatehuespedes", controller:"Home",AdditionalFields =("Niños,TipoHabitacion"))]
         public int? Adultos { get; set; }
         [Required(ErrorMessage = "La cantidad de Niños es requerido")]
         public int? Niños { get; set; }
