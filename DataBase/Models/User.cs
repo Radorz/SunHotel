@@ -9,7 +9,7 @@ namespace DataBase.Models
 {
     public partial class User
     {
-        public int IdUser { get; set; }
+        public int Id { get; set; }
         public string Correo { get; set; }
         public string Password { get; set; }
     }

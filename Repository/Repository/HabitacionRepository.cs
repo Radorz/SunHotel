@@ -11,11 +11,11 @@ using ViewModels;
 
 namespace Repository.Repository
 {
-    public class HabitacionRepository : RepositoryBase<Habitacion, ba4cpg3zvekknrm1lhokContext>
+    public class HabitacionRepository : RepositoryBase<Habitacion, SunHotelContext>
     {
         private readonly IMapper _mapper;
 
-        public HabitacionRepository(ba4cpg3zvekknrm1lhokContext context, IMapper mapper) : base(context)
+        public HabitacionRepository(SunHotelContext context, IMapper mapper) : base(context)
         {
             _mapper = mapper;
         }
@@ -24,8 +24,8 @@ namespace Repository.Repository
         public async Task<List<DateTime>> FechasOcupadas(int tipohabitacion)
         {
 
-            var count = await _context.Habitacion.CountAsync(a => a.IdTipoHabitacion == tipohabitacion);
-            var reservas = await _context.Reserva.Where(a => a.FechaLlegada > DateTime.Today && a.IdTipoHabitacion == tipohabitacion).ToListAsync();
+            var count = await _context.Habitaciones.CountAsync(a => a.IdTipoHabitacion == tipohabitacion);
+            var reservas = await _context.Reservas.Where(a => a.FechaLlegada > DateTime.Today && a.IdTipoHabitacion == tipohabitacion).ToListAsync();
             var listdates = new List<DateTime>();
             var fechasocupadas = new List<DateTime>();
 
@@ -65,7 +65,7 @@ namespace Repository.Repository
             {
                 var vm =  _mapper.Map<ListHabitacionVM>(li);
                 var tipo = await _context.TipoHabitaciones.FindAsync(li.IdTipoHabitacion);
-                var edificio = await _context.Edificio.FirstOrDefaultAsync(a => a.IdEdificio == vm.IdEdificio);
+                var edificio = await _context.Edificios.FirstOrDefaultAsync(a => a.Id == vm.IdEdificio);
                 if (edificio != null)
                 {
                     vm.IdEdificio = Convert.ToInt32(edificio.NumeroEdificio);

@@ -9,7 +9,7 @@ namespace DataBase.Models
 {
     public partial class ImgHabitaciones
     {
-        public int IdImgHabitaciones { get; set; }
+        public int Id { get; set; }
         public string Path { get; set; }
         public int IdTipoHabitacion { get; set; }
     }

@@ -9,7 +9,7 @@ namespace DataBase.Models
 {
     public partial class Pagos
     {
-        public int IdPago { get; set; }
+        public int Id { get; set; }
         public string Numero { get; set; }
         public string Titular { get; set; }
         public decimal? Cantidadpagar { get; set; }

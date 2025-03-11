@@ -11,23 +11,23 @@ using ViewModels;
 
 namespace Repository.Repository
 {
-    public class ReservaRepository : RepositoryBase<Reserva, ba4cpg3zvekknrm1lhokContext>
+    public class ReservaRepository : RepositoryBase<Reserva, SunHotelContext>
     {
         private readonly IMapper _mapper;
 
-        public ReservaRepository(ba4cpg3zvekknrm1lhokContext context, IMapper mapper) : base(context)
+        public ReservaRepository(SunHotelContext context, IMapper mapper) : base(context)
         {
             _mapper = mapper;
         }
         public async Task<bool> AddCustom(ResumenVM vm, int idpago)
         {
             var map = _mapper.Map<Reserva>(vm);
-            map.IdTipoHabitacion = _context.TipoHabitaciones.FirstOrDefault(a => a.Nombre == vm.TipoHabitacion).IdTipoHabitacion;
+            map.IdTipoHabitacion = _context.TipoHabitaciones.FirstOrDefault(a => a.Nombre == vm.TipoHabitacion).Id;
             map.FechaPago = DateTime.Now;
 
-            var reservas = await _context.Reserva.Where(a => a.FechaSalida > DateTime.Today && a.FechaSalida >= vm.FechaSalida && a.IdTipoHabitacion == map.IdTipoHabitacion).Select(p => p.IdHabitacion).ToListAsync();
-          var idhabitacion= await _context.Habitacion.FirstOrDefaultAsync(a=> !reservas.Contains( a.IdHabitacion) && a.IdTipoHabitacion == map.IdTipoHabitacion);
-                map.IdHabitacion = idhabitacion.IdHabitacion;
+            var reservas = await _context.Reservas.Where(a => a.FechaSalida > DateTime.Today && a.FechaSalida >= vm.FechaSalida && a.IdTipoHabitacion == map.IdTipoHabitacion).Select(p => p.IdHabitacion).ToListAsync();
+          var idhabitacion= await _context.Habitaciones.FirstOrDefaultAsync(a=> !reservas.Contains( a.Id) && a.IdTipoHabitacion == map.IdTipoHabitacion);
+                map.IdHabitacion = idhabitacion.Id;
             map.IdPago = idpago;
             await Add(map);
 
@@ -36,12 +36,12 @@ namespace Repository.Repository
         public async Task<bool> getresumen(ResumenVM vm)
         {
             var map = _mapper.Map<Reserva>(vm);
-            map.IdTipoHabitacion = _context.TipoHabitaciones.FirstOrDefault(a => a.Nombre == vm.TipoHabitacion).IdTipoHabitacion;
+            map.IdTipoHabitacion = _context.TipoHabitaciones.FirstOrDefault(a => a.Nombre == vm.TipoHabitacion).Id;
             map.FechaPago = DateTime.Now;
 
-            var reservas = await _context.Reserva.Where(a => a.FechaSalida > DateTime.Today && a.FechaSalida <= vm.FechaSalida && a.IdTipoHabitacion == map.IdTipoHabitacion).Select(p => p.IdHabitacion).ToListAsync();
-            var idhabitacion = await _context.Habitacion.FirstOrDefaultAsync(a => !reservas.Contains(a.IdHabitacion) && a.IdTipoHabitacion == map.IdTipoHabitacion);
-            map.IdHabitacion = idhabitacion.IdHabitacion;
+            var reservas = await _context.Reservas.Where(a => a.FechaSalida > DateTime.Today && a.FechaSalida <= vm.FechaSalida && a.IdTipoHabitacion == map.IdTipoHabitacion).Select(p => p.IdHabitacion).ToListAsync();
+            var idhabitacion = await _context.Habitaciones.FirstOrDefaultAsync(a => !reservas.Contains(a.Id) && a.IdTipoHabitacion == map.IdTipoHabitacion);
+            map.IdHabitacion = idhabitacion.Id;
 
             await Add(map);
 

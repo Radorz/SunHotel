@@ -6,9 +6,9 @@ using System.Text;
 
 namespace Repository.Repository
 {
-    public class EdificiosRepository : RepositoryBase<Edificio, ba4cpg3zvekknrm1lhokContext>
+    public class EdificiosRepository : RepositoryBase<Edificio, SunHotelContext>
     {
-        public EdificiosRepository(ba4cpg3zvekknrm1lhokContext context) : base(context)
+        public EdificiosRepository(SunHotelContext context) : base(context)
         {
 
         }

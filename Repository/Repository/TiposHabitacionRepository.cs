@@ -9,11 +9,11 @@ using ViewModels;
 
 namespace Repository.Repository
 {
-    public class TiposHabitacionRepository : RepositoryBase<TipoHabitaciones, ba4cpg3zvekknrm1lhokContext>
+    public class TiposHabitacionRepository : RepositoryBase<TipoHabitaciones, SunHotelContext>
     {
         private readonly IMapper _mapper;
 
-        public TiposHabitacionRepository(ba4cpg3zvekknrm1lhokContext context, IMapper mapper) : base(context)
+        public TiposHabitacionRepository(SunHotelContext context, IMapper mapper) : base(context)
         {
             _mapper = mapper;
         }
@@ -24,7 +24,7 @@ namespace Repository.Repository
             foreach(var li in list)
             {
                 var map = _mapper.Map<selectipo>(li);
-                map.Idtipo = li.IdTipoHabitacion;
+                map.Idtipo = li.Id;
                 vm.Add(map);
             }
 

@@ -33,7 +33,7 @@ namespace SunHotel
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<ba4cpg3zvekknrm1lhokContext>(options => options.UseMySql(Configuration.GetConnectionString("Default"), x => x.EnableRetryOnFailure()));
+            services.AddDbContext<SunHotelContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"), x => x.EnableRetryOnFailure()));
             services.AddAutoMapper(typeof(AutomapperConfinew).GetTypeInfo().Assembly);
             services.AddSession(so =>
 
@@ -58,7 +58,7 @@ namespace SunHotel
                 services.AddControllers();
 
 
-            }).AddEntityFrameworkStores<ba4cpg3zvekknrm1lhokContext>().AddDefaultTokenProviders();
+            }).AddEntityFrameworkStores<SunHotelContext>().AddDefaultTokenProviders();
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
@@ -98,7 +98,8 @@ namespace SunHotel
             services.AddScoped<Iemailsender, Gmailsender>();
             services.AddScoped<ITemplateHelper, TemplateHelper>();
 
-
+            services.AddHttpClient();
+            services.AddControllersWithViews();
 
         }
 

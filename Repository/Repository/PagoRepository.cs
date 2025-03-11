@@ -11,11 +11,11 @@ using ViewModels;
 
 namespace Repository.Repository
 {
-    public class PagoRepository : RepositoryBase<Pagos, ba4cpg3zvekknrm1lhokContext>
+    public class PagoRepository : RepositoryBase<Pagos, SunHotelContext>
     {
         private readonly IMapper _mapper;
 
-        public PagoRepository(ba4cpg3zvekknrm1lhokContext context, IMapper mapper) : base(context)
+        public PagoRepository(SunHotelContext context, IMapper mapper) : base(context)
         {
             _mapper = mapper;
         }
@@ -23,10 +23,10 @@ namespace Repository.Repository
         {
             var map = _mapper.Map<Pagos>(vm);
             map.Numero = vm.numeracion;
-          var added= await Add(map);
-            return(added);
+            var added = await Add(map);
+            return (added);
         }
-       
+
 
 
 

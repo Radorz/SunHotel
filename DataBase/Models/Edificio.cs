@@ -9,7 +9,7 @@ namespace DataBase.Models
 {
     public partial class Edificio
     {
-        public int IdEdificio { get; set; }
+        public int Id { get; set; }
         public string NumeroEdificio { get; set; }
     }
 }

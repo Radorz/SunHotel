@@ -9,7 +9,7 @@ namespace DataBase.Models
 {
     public partial class Habitacion
     {
-        public int IdHabitacion { get; set; }
+        public int Id { get; set; }
         public int IdTipoHabitacion { get; set; }
         public int IdEdificio { get; set; }
         public int NoHabitacion { get; set; }

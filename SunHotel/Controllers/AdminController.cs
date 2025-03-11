@@ -127,7 +127,7 @@ namespace SunHotel.Controllers
 
                         var img = new ImgHabitaciones();
 
-                        img.IdTipoHabitacion = save.IdTipoHabitacion;
+                        img.IdTipoHabitacion = save.Id;
                         img.Path = uniqueName;
 
                         await _imghabitacionRepository.Add(img);
@@ -170,7 +170,7 @@ namespace SunHotel.Controllers
 
                         var img = new ImgHabitaciones();
 
-                        img.IdTipoHabitacion = save.IdTipoHabitacion;
+                        img.IdTipoHabitacion = save.Id;
                         img.Path = uniqueName;
 
                         await _imghabitacionRepository.Add(img);
@@ -196,7 +196,7 @@ namespace SunHotel.Controllers
 
                 foreach (var i in imgtipo)
                 {
-                    await _imghabitacionRepository.Delete(i.IdImgHabitaciones);
+                    await _imghabitacionRepository.Delete(i.Id);
                 }
                 await _tiposHabitacionRepository.Delete(vm.eliminar.Value);
             }
@@ -277,11 +277,11 @@ namespace SunHotel.Controllers
                     foreach (var item in hab)
                     {
                         var reservas = await _reservaRepository.GetAll();
-                        var res = reservas.Where(a => a.IdHabitacion == item.IdHabitacion).ToList();
+                        var res = reservas.Where(a => a.IdHabitacion == item.Id).ToList();
 
                      
 
-                        await _HabitacionRepository.Delete(item.IdHabitacion);
+                        await _HabitacionRepository.Delete(item.Id);
                     }
                 }
             }

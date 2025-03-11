@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 namespace DataBase.Models
 {
-    public partial class Reserva
+    public partial class Reserva 
     {
-        public int IdReserva { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Cedula { get; set; }
         public DateTime? FechaLlegada { get; set; }
